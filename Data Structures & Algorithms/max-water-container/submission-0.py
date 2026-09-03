@@ -8,7 +8,7 @@ class Solution:
             h = min(heights[l], heights[r])
             w = r - l
 
-            area = max(h*w, area)
+            area = max(h * w, area)
 
             if heights[l] < heights[r]:
                 l += 1
