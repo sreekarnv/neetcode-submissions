@@ -1,8 +1,8 @@
 class Solution:
-    def isPalindrome(self, s: str, l: int = 0, r: int = -1) -> bool:
-        if r == -1:
+    def isPalindrome(self, s: str, l: int = 0, r: int | None = None) -> bool:
+        if r == None:
             r = len(s) - 1
-
+        
         while l < r:
             if not s[l] == s[r]: return False
 
@@ -18,8 +18,8 @@ class Solution:
         while l < r:
             if not s[l] == s[r]:
                 return self.isPalindrome(s, l + 1, r) or self.isPalindrome(s, l, r - 1)
-
+            
             l += 1
             r -= 1
 
-        return True 
+        return True
