@@ -3,17 +3,13 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        l = 0
-        r = len(nums) - 1
-        mid = 0
+        counters = [0] * 3
 
-        while mid <= r:
-            if nums[mid] == 0:
-                nums[mid], nums[l] = nums[l], nums[mid]
-                mid += 1
-                l += 1
-            elif nums[mid] == 1:
-                mid += 1
-            else:
-                nums[mid], nums[r] = nums[r], nums[mid]
-                r -= 1
+        for n in nums:
+            counters[n] += 1
+        
+        n = 0
+        for i, c in enumerate(counters):
+            for _ in range(c):
+                nums[n] = i
+                n += 1
