@@ -8,7 +8,7 @@ class Solution:
             while ch in seen:
                 seen.remove(s[l])
                 l += 1
-
+            
             longest = max(r - l + 1, longest)
             seen.add(ch)
         
