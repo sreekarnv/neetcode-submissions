@@ -11,14 +11,15 @@ class Solution:
         carry = 0
 
         while l1 or l2:
-            curr = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry
-            carry = curr // 10 
+            s = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry
 
-            tail.next = ListNode(curr % 10)
+            carry = s // 10
+
+            tail.next = ListNode(s % 10)
             tail = tail.next
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
         
-        tail.next = ListNode(carry) if carry else None
+        tail.next = ListNode(carry) if carry > 0 else None
 
         return d.next
