@@ -10,12 +10,13 @@ class Node:
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
         mapper = {None: None}
-        curr = head
 
+        curr = head
         while curr:
             mapper[curr] = Node(curr.val)
             curr = curr.next
         
+
         curr = head
         while curr:
             copy = mapper[curr]
