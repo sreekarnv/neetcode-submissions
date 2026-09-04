@@ -1,18 +1,20 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        checker = {
+        mapper = {
             "}": "{",
             "]": "[",
             ")": "("
         }
+        stack = []
 
         for ch in s:
-            if not stack or ch not in checker:
+            if not stack or ch not in mapper:
                 stack.append(ch)
                 continue
             
-            if not stack[-1] == checker[ch]: return False
+            if not mapper[ch] == stack[-1]:
+                return False
+            
             stack.pop()
         
         return len(stack) == 0
