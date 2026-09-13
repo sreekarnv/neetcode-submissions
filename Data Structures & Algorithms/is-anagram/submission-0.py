@@ -1,17 +1,20 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        mapper = {}
+        if not len(s) == len(t):
+            return False
+                
+        ch_map = {}
 
         for ch in s:
-            mapper[ch] = 1 + mapper.get(ch, 0)
-
+            ch_map[ch] = 1 + ch_map.get(ch, 0)
+        
         for ch in t:
-            if ch not in mapper:
+            if ch not in ch_map:
                 return False
             
-            mapper[ch] -= 1
-
-            if mapper[ch] == 0:
-                del mapper[ch]
+            ch_map[ch] -= 1
+            if ch_map[ch] == 0:
+                del ch_map[ch]
         
-        return len(mapper) == 0
+        return len(ch_map) == 0
+        
