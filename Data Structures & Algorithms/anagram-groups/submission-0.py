@@ -1,18 +1,18 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = {}
+        results = {}
 
         for s in strs:
-            chars = [0] * 26
-
+            chs = [0] * 26
+            
             for ch in s:
-                chars[ord(ch) - ord('a')] += 1
+                chs[ord(ch) - ord('a')] += 1
             
-            chars = tuple(chars)
+            chs = tuple(chs)
 
-            if chars not in result:
-                result[chars] = []
+            if chs not in results:
+                results[chs] = []
             
-            result[chars].append(s)
+            results[chs].append(s)
         
-        return list(result.values())
+        return list(results.values())
