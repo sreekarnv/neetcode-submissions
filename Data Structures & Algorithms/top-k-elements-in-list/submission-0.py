@@ -1,13 +1,14 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        freq = {}
+        mapper = {}
         for n in nums:
-            freq[n] = 1 + freq.get(n, 0)
-
+            mapper[n] = 1 + mapper.get(n, 0)
+        
         counters = []
-        for i, v in freq.items():
-            counters.append((v, i))
-        counters.sort(reverse=True, key=lambda x: (-x[0], x[1]))
+        for _k, v in mapper.items():
+            counters.append((v, _k))
+
+        counters.sort()
 
         results = []
         while len(results) < k:
