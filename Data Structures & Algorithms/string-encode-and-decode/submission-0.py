@@ -9,18 +9,18 @@ class Solution:
 
     def decode(self, s: str) -> List[str]:
         words = []
+
         i = 0
-
-        for j, ch in enumerate(s):
-            if ch == "#":
-                word_len = s[i:j]
-                if not word_len.isnumeric():
-                    continue
-                
-                word_len = int(word_len)
-                word = s[j + 1:j + 1 + word_len]
-                i = j + 1 + word_len
-
+        j = 0
+        while j < len(s):
+            if s[j] == "#":
+                word_len = int(s[i:j])
+                k = j + 1 + word_len
+                word = s[j + 1:k]
                 words.append(word)
+                i = j + 1 + word_len
+                j = i
+            else:
+                j += 1
         
         return words
