@@ -10,4 +10,3 @@ class Solution:
             
             mapper[n] = i
         
-        
