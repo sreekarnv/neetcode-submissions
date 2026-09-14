@@ -4,8 +4,7 @@ class Solution:
 
         results = []
 
-        for i in range(len(nums)):
-            
+        for i, n in enumerate(nums):
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
             
@@ -13,18 +12,19 @@ class Solution:
             r = len(nums) - 1
 
             while l < r:
-                curr = nums[i] + nums[l] + nums[r]
+                curr = n + nums[l] + nums[r]
 
                 if curr > 0:
                     r -= 1
                 elif curr < 0:
                     l += 1
                 else:
-                    results.append([nums[i], nums[l], nums[r]])
+                    results.append([n, nums[l], nums[r]])
+
                     l += 1
                     r -= 1
 
                     while l < r and nums[l] == nums[l - 1]:
                         l += 1
-        
+
         return results
