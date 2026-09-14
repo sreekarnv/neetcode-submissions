@@ -9,7 +9,7 @@ class Solution:
                 seen.remove(s[l])
                 l += 1
             
-            longest = max(r - l + 1, longest)
             seen.add(ch)
+            longest = max(longest, r - l + 1)
         
         return longest
