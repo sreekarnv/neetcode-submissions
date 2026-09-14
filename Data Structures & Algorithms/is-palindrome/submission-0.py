@@ -11,9 +11,10 @@ class Solution:
             if not s[r].isalnum():
                 r -= 1
                 continue
-            
-            if not s[l].lower() == s[r].lower(): return False
 
+            if not s[l].lower() == s[r].lower():
+                return False
+            
             l += 1
             r -= 1
         
