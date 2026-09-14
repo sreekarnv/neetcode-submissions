@@ -2,8 +2,8 @@ class Solution:
     def isValid(self, s: str) -> bool:
         mapper = {
             "}": "{",
-            "]": "[",
-            ")": "("
+            ")": "(",
+            "]": "["
         }
         stack = []
 
@@ -12,7 +12,7 @@ class Solution:
                 stack.append(ch)
                 continue
             
-            if not mapper[ch] == stack[-1]:
+            if not stack[-1] == mapper[ch]:
                 return False
             
             stack.pop()
