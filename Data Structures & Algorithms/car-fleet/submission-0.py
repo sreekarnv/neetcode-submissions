@@ -1,20 +1,13 @@
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        cars = []
-        for i in range(len(position)):
-            cars.append((position[i], speed[i]))
+        cars = sorted(zip(position, speed), reverse=True)
+        fleets = []
+
+        for position, speed in cars:
+            _time = (target - position) / speed
+            fleets.append(_time)
+
+            if len(fleets) >= 2 and fleets[-1] <= fleets[-2]:
+                fleets.pop()
         
-        cars.sort(reverse=True)
-
-
-        fleets = 0
-        max_time = 0
-
-        for p, s in cars:
-            t = (target - p) / s
-
-            if max_time < t:
-                fleets += 1
-                max_time = t
-        
-        return fleets
+        return len(fleets)
