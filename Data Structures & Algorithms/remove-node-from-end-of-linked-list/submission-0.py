@@ -5,33 +5,20 @@
 #         self.next = next
 
 class Solution:
-    def reverse(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev = None
-        curr = head
-
-        while curr:
-            tmp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = tmp
-        
-        return prev
-
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        head = self.reverse(head)
         d = ListNode()
-        prev = d
-        curr = head
-        i = 1
+        d.next = head
 
-        while curr:
-            if i == n:
-                prev.next = curr.next
-                break
-            
-            prev.next = curr
-            prev = prev.next
-            curr = curr.next
-            i += 1
+        slow = d
+        fast = d
+
+        for _ in range(n):
+            fast = fast.next
         
-        return self.reverse(d.next)
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+        
+        slow.next = slow.next.next
+
+        return d.next
