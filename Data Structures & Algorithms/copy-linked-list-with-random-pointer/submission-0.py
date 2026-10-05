@@ -16,12 +16,11 @@ class Solution:
             mapper[curr] = Node(curr.val)
             curr = curr.next
         
-
         curr = head
         while curr:
             copy = mapper[curr]
-            copy.next = mapper[curr.next]
             copy.random = mapper[curr.random]
+            copy.next = mapper[curr.next]
 
             curr = curr.next
         
